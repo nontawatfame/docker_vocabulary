@@ -1,0 +1,22 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+    container_name: frontend_vacobulary
+  backend:
+    build: ./backend
+    restart: always
+    container_name: backend_vacobulary
+    ports:
+      - 8010:8080
+  nginx:
+    build: ./nginx
+    restart: always
+    container_name: nginx_vacobulary
+    ports:
+      - 3010:80
+networks:
+  default:
+    external:
+      name: test
