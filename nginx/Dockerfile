@@ -1,6 +1,7 @@
 # Base on offical NGINX Alpine image
 FROM nginx:alpine
 
+ENV TZ="Asia/Bangkok"
 # Remove any existing config files
 RUN rm /etc/nginx/conf.d/*
 

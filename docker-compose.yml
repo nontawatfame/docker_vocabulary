@@ -1,15 +1,24 @@
-version: '3'
+version: '3.9'
 services:
   frontend:
     build: ./frontend
     restart: always
+    volumes:
+      - ./frontend:/usr/app:rw
+      - /usr/app/node_modules
+      - /usr/app/.next
     container_name: frontend_vacobulary
+    # depends_on: 
+    #   - backend
   backend:
     build: ./backend
     restart: always
     container_name: backend_vacobulary
+    volumes:
+      - ./backend/public:/usr/app/public:rw
     ports:
       - 8010:8080
+
   nginx:
     build: ./nginx
     restart: always
